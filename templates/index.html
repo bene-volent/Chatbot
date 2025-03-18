@@ -1,0 +1,45 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DeepSeek Chatbot</title>
+        <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+    </head>
+    <body>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h1>DeepSeek Chatbot</h1>
+                <div class="header-controls">
+                    <span id="status-indicator" class="status ready">Ready</span>
+                    <button id="reset-btn">Reset Chat</button>
+                </div>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot">
+                    <div class="message-content">
+                        Hello! I'm your DeepSeek assistant. How can I help you today?
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <form id="chat-form">
+                    <input type="text" id="user-input" placeholder="Type your message here..." autocomplete="off">
+                    <button type="submit" id="send-btn">
+                        <span class="button-text">Send</span>
+                        <span class="button-spinner hidden"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <script>
+            // Generate a unique session ID for this browser session
+            if (!localStorage.getItem('chatSessionId')) {
+                localStorage.setItem('chatSessionId', 'session_' + Date.now());
+            }
+            const sessionId = localStorage.getItem('chatSessionId');
+        </script>
+        <script src="{{ url_for('static', path='/script.js') }}"></script>
+    </body>
+    </html>
